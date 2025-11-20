@@ -10,7 +10,7 @@ import Image from "next/image";
 interface PageProps {
   params: {
     id: string; 
-  } & Promise<any>;
+  } 
 }
 
 // 2. Convert to async function to fetch data on the server
