@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Github, Zap, Activity, Award } from "lucide-react";
+import { Github, Zap, Activity } from "lucide-react";
 
 type Metrics = {
   github?: {

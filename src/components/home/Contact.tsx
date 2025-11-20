@@ -1,5 +1,5 @@
 "use client";
-import { PrimaryText } from "@/components/text";
+// import { PrimaryText } from "@/components/text";
 import { ContactForm } from "@/components/ContactForm";
 import { SubTitle } from "@/components/Titile";
 import { Section, WrapSection } from "@/components/Section";
@@ -16,9 +16,9 @@ export default function Contact({ home = false }: { home?: boolean }) {
           </SubTitle>
           <div className="hidden md:block"></div>
           <div className="mb-auto flex flex-col gap-8">
-            I'm interested in working on ambitious projects with positive people
+            I&lsquo;m interested in working on ambitious projects with positive people
             and goal-oriented companies.
-            <br /> However, if you have other request or question, don’t
+            <br /> However, if you have other request or question, don&lsquo;t
             hesitate to contact me.
           </div>
           <ContactForm />

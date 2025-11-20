@@ -11,7 +11,7 @@ import {
   Coffee,
   Music,
   Book,
-  Camera,
+
   Plane,
 } from "lucide-react";
 

@@ -9,7 +9,7 @@ import RectangleSVG from "@/components/assets/RectangleSVG";
 import { getTestimonials, getSummary } from "@/sanity/lib/sanityApi";
 import { getResume } from "@/sanity/lib/sanityApi";
 // import { useEffect, useState } from "react";
-import {  useState } from "react";
+import { useState } from "react";
 // import { Eye, X, Download } from "lucide-react";
 import { Eye, X } from "lucide-react";
 
@@ -19,7 +19,7 @@ const resumeData = await getResume();
 const summary = summaryData ? summaryData.text : "";
 const testimonials = Array.isArray(testimonialsData) ? testimonialsData : [];
 
-export default function intro() {
+export default function Intro() {
   const resumeUrl = resumeData ? resumeData[0]?.pdf_url : "";
   const [isDownloading, setIsDownloading] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
@@ -135,4 +135,4 @@ export default function intro() {
   );
 }
 
-export const Intro = intro;
+export const Intro = Intro;

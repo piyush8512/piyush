@@ -1,6 +1,7 @@
 import { APPLINK_VARIANTS } from "@/utils/contant";
-import { PrimaryText, SecondaryText } from "@/components/text";
+// import { PrimaryText, SecondaryText } from "@/components/text";
 
+import { PrimaryText } from "@/components/text";
 import Image from "next/image";
 import AppLink from "./app-link";
 

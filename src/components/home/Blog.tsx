@@ -1,4 +1,3 @@
-import { ProjectCard } from "@/components/ProjectCard";
 import { MainTitle, SubTitle } from "@/components/Titile";
 import { Section, WrapSection } from "@/components/Section";
 import Link from "next/link";

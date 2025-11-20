@@ -1,34 +1,44 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { PrimaryText } from "@/components/text";
 import AppLink from "@/components/app-link";
 
-// 1. Define your fallback image path (Place this image in your 'public' folder)
+// 1. Define the fallback image
 const FALLBACK_IMAGE =
   "https://www.digitalons.com/wp-content/uploads/2022/05/four-wooden-blocks-with-letters-blog.jpg";
+
+// 2. FIX TYPE ERROR: Define the structure of the blog prop
+interface BlogPost {
+  _id: string;
+  title: string;
+  description: string;
+  image_url?: string; // Optional string
+  date?: string;      // Optional string (if your sanity schema has it)
+  _createdAt?: string; // Sanity always provides this
+}
 
 export const BlogListCard = ({
   blog,
   lineClamp = 3,
 }: {
-  blog: any;
+  blog: BlogPost; // <--- CHANGED FROM 'any' TO 'BlogPost'
   lineClamp?: number;
 }) => {
-  // 2. LOGIC: Check if the blog has an image. If not, use the fallback.
-  // This ensures 'finalImage' is never null.
+  
   const finalImage = blog.image_url ? blog.image_url : FALLBACK_IMAGE;
 
-  const formattedDate = new Date().toLocaleDateString("en-US", {
+  // 3. FIX DATE LOGIC: Use the blog's date, not the current date
+  // If 'blog.date' exists use it, otherwise use '_createdAt', otherwise fallback to today.
+  const dateString = blog.date || blog._createdAt || new Date().toISOString();
+  
+  const formattedDate = new Date(dateString).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
     day: "numeric",
   });
 
   return (
-    <div className="w-full h-fit border border-tertiary flex flex-col  group hover:border-purple/50 transition-colors duration-300">
-      {/* 3. REMOVED the '{blog.image_url && ...}' check. 
-             We always render this div now because we always have an image (real or fallback). */}
+    <div className="w-full h-fit border border-tertiary flex flex-col group hover:border-purple/50 transition-colors duration-300">
       <div className="relative w-full aspect-video overflow-hidden bg-gray-100">
         <Image
           src={finalImage}
