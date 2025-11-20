@@ -134,5 +134,3 @@ export default function Intro() {
     </Section>
   );
 }
-
-export const Intro ;
