@@ -13,12 +13,12 @@ export default function ProjectsPage() {
   return (
     <>
       <Projects />
-      <Seperator />
+      {/* <Seperator />
       <AIProjects />
       <Seperator />
       <UtilProjects />
       <Seperator />
-      <OtherProjects />
+      <OtherProjects /> */}
     </>
   );
 }

@@ -9,8 +9,8 @@ import Image from "next/image";
 // 1. Define the interface for the page props
 interface PageProps {
   params: {
-    id: string;
-  };
+    id: string; 
+  } & Promise<any>;
 }
 
 // 2. Convert to async function to fetch data on the server
@@ -41,25 +41,25 @@ const BlogPostPage = async ({ params }: PageProps) => {
         {/* Back Button */}
         <div className="mb-8">
           <Link href="/" className="hover:text-purple transition-colors">
-             &larr; Back to Home
+            &larr; Back to Home
           </Link>
         </div>
 
         {/* Blog Header */}
         <div className="space-y-4 mb-10">
           <MainTitle>{post.title}</MainTitle>
-          
+
           {/* Date or Description */}
           <div className="flex gap-4 items-center text-gray-500">
-             <SubTitle>{post.description}</SubTitle>
+            <SubTitle>{post.description}</SubTitle>
           </div>
         </div>
 
         {/* Blog Image */}
         {post.image_url && (
           <div className="w-full h-64 md:h-96 relative mb-10 rounded-xl overflow-hidden border border-white/10">
-            <Image 
-              src={post.image_url} 
+            <Image
+              src={post.image_url}
               alt={post.title}
               fill
               className="object-cover"
@@ -77,7 +77,6 @@ const BlogPostPage = async ({ params }: PageProps) => {
             {post.content}
           </PrimaryText>
         </article>
-
       </WrapSection>
     </Section>
   );

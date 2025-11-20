@@ -77,7 +77,7 @@ interface ProjectData {
   image_url?: string; // Your GROQ query must rename 'image' to 'image_url'
   stack?: string[];
   code?: string;
-  link?: string;
+  link?: string | null;
   portrait?: boolean; // Optional flag if you use it for image styling
 }
 
