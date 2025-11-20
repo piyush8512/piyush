@@ -1,10 +1,10 @@
 // Social media and contact links configuration
 export const socialLinks = {
-  github: "https://github.com/yourusername",
-  twitter: "https://twitter.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername",
-  peerlist: "https://peerlist.io/yourusername",
-  leetcode: "https://leetcode.com/yourusername",
+  github: "https://github.com/piyush8512",
+  twitter: "https://x.com/piyushpraj6818",
+  linkedin: "www.linkedin.com/in/piyush-prajapati-b5a726258",
+  peerlist: "https://peerlist.io/piyush851",
+  leetcode: "https://leetcode.com/u/prajapatipiyush851/",
   whatsapp: "https://wa.me/919650235842",
   email: "Prajapatipiyush851@gmail.com",
   phone: "+919650235842",

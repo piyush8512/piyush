@@ -189,15 +189,15 @@ Usage: Type a command like '/languages' or '/frameworks' to see skills.
     }
   };
 
-  const handleButtonClick = (category: string) => {
-    if (isTyping) return;
+  // const handleButtonClick = (category: string) => {
+  //   if (isTyping) return;
 
-    const command = `/${category.toLowerCase()}`;
+  //   const command = `/${category.toLowerCase()}`;
 
-    addToHistory("command", `➜ ~ ${command}`);
+  //   addToHistory("command", `➜ ~ ${command}`);
 
-    processCommand(command);
-  };
+  //   processCommand(command);
+  // };
 
   // Auto-scroll when history updates
   useEffect(() => {

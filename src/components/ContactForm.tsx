@@ -3,7 +3,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { BsFillSendFill } from "react-icons/bs";
-import { PrimaryText, SecondaryText, TertiaryText } from "@/components/text";
+import { PrimaryText, TertiaryText } from "@/components/text";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Textarea from "@/components/TsxtArea";
@@ -148,7 +148,7 @@ export const ContactForm = () => {
             <div className="text-green-500 text-4xl">✓</div>
             <h3 className="text-xl font-bold text-green-500">Message Sent!</h3>
             <p className="text-tertiary text-center">
-              Thank you for reaching out. I'll get back to you soon!
+              Thank you for reaching out. I&apos;ll get back to you soon!
             </p>
           </motion.div>
         ) : submitError ? (

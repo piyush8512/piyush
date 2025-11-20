@@ -4,9 +4,9 @@ import Projects from "@/components/CompletedProjects";
 import OtherProjects from "@/components/OtherProject";
 import UtilProjects from "@/components/UtilProjects";
 export const metadata = {
-  title: "Praises Tula Projects | Software Engineer & Web Developer",
+  title: "Piyush Projects | Software Engineer & Web Developer",
   description:
-    "Discover Praises Tula's projects, showcasing his expertise in software engineering and web development.",
+    "Discover Piyush projects, showcasing his expertise in software engineering and web development.",
 };
 
 export default function ProjectsPage() {

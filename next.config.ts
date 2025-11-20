@@ -1,8 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['cdn.sanity.io'],
+    // Using remotePatterns is safer and recommended for Next.js 13/14+
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.digitalons.com',
+      },
+    ],
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

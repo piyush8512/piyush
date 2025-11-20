@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PROFILE_LINKS } from "@/utils/data";
 import {
   FaLinkedinIn,
   FaGithub,
@@ -26,6 +25,7 @@ const Header = () => {
     { label: "works", path: "/work" },
     { label: "about-me", path: "/about" },
     { label: "projects", path: "/projects" },
+    { label: "blog", path: "/blog" },
   ];
 
   const toggleMenu = () => {

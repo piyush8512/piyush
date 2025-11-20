@@ -1,5 +1,5 @@
 import { SubTitle } from "@/components/Titile";
-import { FUN_FACTS, SKILLS } from "@/utils/data";
+import { FUN_FACTS, } from "@/utils/data";
 import { Section, WrapSection } from "@/components/Section";
 
 import DotsSVG from "@/components/assets/DotsSVG";

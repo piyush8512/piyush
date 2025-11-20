@@ -9,6 +9,7 @@ import currentWork from './currentWork'
 import funFacts from './funFacts'
 import contactInfo from './contactInfo'
 import project from './project' // Import the single project schema
+import blogPost from './blogPost.js'
 
 export const schemaTypes = [
   testimonial,
@@ -21,4 +22,5 @@ export const schemaTypes = [
   funFacts,
   contactInfo,
   project, // Add the project schema
+  blogPost  
 ]

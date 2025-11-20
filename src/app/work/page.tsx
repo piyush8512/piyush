@@ -11,25 +11,25 @@ const ExperienceCard = () => {
           <div className="flex items-center gap-2 mb-1">
             <span className="text-green-400 font-mono text-sm">$</span>
             <h3 className="text-xl font-semibold text-white">
-              Senior Full Stack Developer
+              Full Stack Developer
             </h3>
           </div>
           <h4 className="text-green-400 text-lg font-medium mb-2">
-            TechCorp Solutions
+            Vackado Private Ltd.
           </h4>
           <div className="flex flex-wrap gap-4 text-sm text-gray-400">
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
-              <span>2022 - Present</span>
+              <span>Aug 2024 - April 2025</span>
             </div>
             <div className="flex items-center gap-1">
               <MapPin className="w-4 h-4" />
-              <span>Remote</span>
+              <span>On Site</span>
             </div>
           </div>
         </div>
         <div>
-          <button className="text-green-400 hover:text-green-300 transition">
+          {/* <button className="text-green-400 hover:text-green-300 transition">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -43,14 +43,18 @@ const ExperienceCard = () => {
                 d="M19 9l-7 7-7-7"
               />
             </svg>
-          </button>
+          </button> */}
         </div>
       </div>
 
       <p className="text-gray-300 mb-4">
-        Leading development of enterprise-scale web applications and IoT
-        systems. Architecting scalable solutions using modern technologies and
-        mentoring junior developers.
+        Designed and developed multiple full-stack web applications, including a
+        responsive company website with meeting booking and event management
+        features using React.js and Tailwind CSS, an e-commerce platform with
+        dynamic product filtering built with PHP and MySQL, and a registration
+        system using Next.js and Supabase for streamlined user onboarding.
+        Contributed to end-to-end development encompassing UI/UX design, backend
+        API integration, and deployment workflows.
       </p>
 
       <div>
@@ -63,10 +67,11 @@ const ExperienceCard = () => {
             "Node.js",
             "TypeScript",
             "Python",
-            "AWS",
-            "Docker",
             "MongoDB",
-            "PostgreSQL",
+            "Tailwind CSS",
+            "Next.js",
+            "Express.js",
+            "MySQL",
           ].map((tech) => (
             <span
               key={tech}
@@ -88,20 +93,17 @@ const Page = () => {
         <MainTitle>whoami:~$ cd experience</MainTitle>
         <div className="mt-8 ">
           <ExperienceCard />
-          <ExperienceCard />
+          {/* <ExperienceCard /> */}
         </div>
         <div className="text-center mt-16">
           <div className="bg-code-bg border border-primary/30 rounded-lg p-8 max-w-2xl mx-auto">
             <h3 className="text-xl font-mono text-primary mb-4">
               $ cat contact.txt
             </h3>
-            <p className="text-foreground/80 mb-6">
-              Interested in working together? Let's build something amazing!
+            <p className="text-foreground/80 ">
+              Interested in working together? Let&apos;s build something
+              amazing!
             </p>
-            <div className="flex gap-4 justify-center">
-              <div >Contact Me</div>
-              <div >Download Resume</div>
-            </div>
           </div>
         </div>
       </WrapSection>

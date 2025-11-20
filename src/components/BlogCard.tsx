@@ -10,6 +10,8 @@ type BlogProp = {
   title: string;
   description: string;
   date: string;
+  image: string;
+  link: string;
 };
 
 export const BlogCard = ({

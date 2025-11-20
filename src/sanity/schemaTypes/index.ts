@@ -10,6 +10,7 @@ import funFacts from '@/sanity/schemas/funFacts';
 import contactInfo from '@/sanity/schemas/contactInfo';
 import project from '@/sanity/schemas/project';
 import resume from '@/sanity/schemas/resume';
+import blogPost from '@/sanity/schemas/blogPost';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,6 +24,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     funFacts,
     contactInfo,
     project,
-    resume
+    resume,
+    blogPost
   ],
 }

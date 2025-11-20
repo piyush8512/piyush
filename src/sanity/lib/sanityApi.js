@@ -80,3 +80,32 @@ export async function getResume() {
 }
 
 
+//get blog posts
+export async function getBlogPosts() {
+  const query = `*[_type == "blogPost"]{
+    _id,
+    title,
+    description,
+    "image_url": image.asset->url,
+    link,
+    content
+  }`;
+  const data = await client.fetch(query);
+  return data;
+} 
+
+export async function getBlogPostById(id) {
+  const query = `*[_type == "blogPost" && _id == $id][0]{
+    _id,
+    title,
+    description,
+    "image_url": image.asset->url,
+    link,
+    content
+  }`;
+  const params = { id };
+  const data = await client.fetch(query, params);
+  return data;
+}
+
+

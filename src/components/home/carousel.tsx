@@ -1,13 +1,14 @@
 "use client";
 
-import { PurpleText } from "@/components/text"; // Assuming this is for generic purple text, adjust if specific to quotes
-import { FaLinkedin } from "react-icons/fa"; // Not directly used in the current render, but kept if needed elsewhere
+// import { PurpleText } from "@/components/text"; // Assuming this is for generic purple text, adjust if specific to quotes
+// import { FaLinkedin } from "react-icons/fa"; // Not directly used in the current render, but kept if needed elsewhere
 import { ORIENTATION } from "@/utils/contant"; // Constant for carousel orientation
-import React, { useState, useEffect, useRef, RefObject } from "react";
+// import React, { useState, useEffect, useRef, RefObject } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import DotsSVG from "../assets/DotsSVG"; // Decorative SVG for top
-import DesignSVG from "../assets/DesignSVG"; // Decorative SVG for bottom
+// import Image from "next/image";
+// import DotsSVG from "../assets/DotsSVG"; // Decorative SVG for top
+// import DesignSVG from "../assets/DesignSVG"; // Decorative SVG for bottom
 
 type Testimonial = {
   name: string;
@@ -84,13 +85,13 @@ const Carousel = ({
     ? "absolute right-1 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-30"
     : "absolute bottom-1 left-1/2 transform -translate-x-1/2 flex flex-row gap-2 z-30";
 
-  const topSvgClasses = isVertical
-    ? "absolute top-2 left-[0%] flex flex-col z-0"
-    : "absolute top-2 left-0 flex flex-col z-0 md:left-[18%] lg:left-[25%]";
+  // const topSvgClasses = isVertical
+  //   ? "absolute top-2 left-[0%] flex flex-col z-0"
+  //   : "absolute top-2 left-0 flex flex-col z-0 md:left-[18%] lg:left-[25%]";
 
-  const bottomSvgClasses = isVertical
-    ? "absolute bottom-2 right-[10%] flex flex-col z-0"
-    : "absolute bottom-2 right-0 flex flex-col z-0 md:right-[20%] lg:right-[25%]";
+  // const bottomSvgClasses = isVertical
+  //   ? "absolute bottom-2 right-[10%] flex flex-col z-0"
+  //   : "absolute bottom-2 right-0 flex flex-col z-0 md:right-[20%] lg:right-[25%]";
 
   return (
     <div

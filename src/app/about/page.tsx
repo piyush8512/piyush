@@ -1,5 +1,9 @@
+"use client";
 import { Section, WrapSection } from "@/components/Section";
 import { SubTitle } from "@/components/Titile";
+import dynamic from "next/dynamic";
+
+const ProfileMetrics = dynamic(() => import("@/components/ProfileMetrics"), { ssr: false });
 import {
   Gamepad2,
   Heart,
@@ -11,11 +15,11 @@ import {
   Plane,
 } from "lucide-react";
 
-export const metadata = {
-  title: "About Piyush | Software Engineer & Web Developer",
-  description:
-    "Learn about Piyush's journey, skills, and experience as a Software Engineer specializing in UI development and animations.",
-};
+// export const metadata = {
+//   title: "About Piyush | Software Engineer & Web Developer",
+//   description:
+//     "Learn about Piyush's journey, skills, and experience as a Software Engineer specializing in UI development and animations.",
+// };
 
 const games = [
   "Cyberpunk 2077", "The Witcher 3", "Valorant", "CS2",
@@ -28,19 +32,10 @@ const hobbies = [
   { name: "Coffee", icon: Coffee, description: "Brewing the perfect cup for those late coding sessions" },
   { name: "Music", icon: Music, description: "Listening to everything from synthwave to lo-fi" },
   { name: "Reading", icon: Book, description: "Tech blogs, sci-fi novels, and programming books" },
-  { name: "Photography", icon: Camera, description: "Capturing moments and urban landscapes" },
+
   { name: "Travel", icon: Plane, description: "Exploring new places and cultures" },
 ];
 
-const facts = [
-  "I can solve a Rubik's cube in under 2 minutes",
-  "My first line of code was written in Python",
-  "I've watched The Matrix trilogy more than 10 times",
-  "I prefer dark mode in everything",
-  "My setup runs on Linux (obviously)",
-  "I collect mechanical keyboards",
-  "I can type 80+ WPM on a good day"
-];
 
 export default function AboutPage() {
   return (
@@ -50,14 +45,22 @@ export default function AboutPage() {
           GET /api/about<span className="text-green-500"> &nbsp;200 OK</span>
         </SubTitle>
 
+
         {/* About Header */}
         <div>
           <h1 className="text-4xl font-bold mb-4">About Me</h1>
           <p className="text-xl text-muted-foreground max-w-2xl">
             A passionate developer who loves to code, game, and explore new technologies. 
-            Here's a glimpse into my world beyond the terminal.
+            Here&apos;s a glimpse into my world beyond the terminal.
           </p>
         </div>
+
+        {/* Profile Metrics */}
+        <div className="mb-6">
+          <ProfileMetrics />
+        </div>
+
+        
 
         {/* Games Section */}
         <section>
@@ -103,7 +106,7 @@ export default function AboutPage() {
         </section>
 
         {/* Fun Facts */}
-        <section>
+        {/* <section>
           <h2 className="text-2xl font-bold mb-4">Random Facts About Me</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {facts.map((fact, index) => (
@@ -116,12 +119,12 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Quote */}
         <section className="text-center pt-12">
           <blockquote className="italic text-muted-foreground text-xl max-w-2xl mx-auto mb-2">
-            "Code is poetry, games are art, and coffee is life. Always learning, always building, always gaming."
+            &quot;Code is poetry, games are art, and coffee is life. Always learning, always building, always gaming.&quot;
           </blockquote>
           <div className="text-primary font-mono">— Me, probably at 3 AM</div>
         </section>

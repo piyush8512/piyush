@@ -5,19 +5,13 @@ import Link from "next/link";
 import AppLink from "@/components/app-link";
 import DotsSVG from "../assets/DotsSVG";
 import RectangleSVG from "../assets/RectangleSVG";
-import { getFeaturedProjects } from "@/sanity/lib/sanityApi";
+import { getBlogPosts } from "@/sanity/lib/sanityApi";
 import { BlogCard } from "@/components/BlogCard";
 
-const projectsData = await getFeaturedProjects();
+const projectsData = await getBlogPosts();
 const projectsfeatured = Array.isArray(projectsData) ? projectsData : [];
+console.log("Projects Featured:", projectsfeatured);
 
-const myBlogPost = {
-  slug: "/blog/aws-ec2-deployment",
-  title: "Complete AWS EC2 Deployment Guide For Fullstack Apps",
-  description:
-    "A comprehensive guide to deploying fullstack applications on AWS EC2.",
-  date: "Jul 25, 2029",
-};
 
 const Blog = ({ home = false }) => {
   return (
@@ -48,18 +42,26 @@ const Blog = ({ home = false }) => {
           </div>
         )}
 
-        {/* <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-rows-3 gap-4">
+        <div className="mt-10 ">
           {projectsfeatured
             .slice(0, home ? 3 : projectsfeatured.length)
-            .map((project, index) => (
-             <BlogCard blog={myBlogPost}  />
-
+            .map((blog) => (
+              <BlogCard
+                key={blog._id}
+                blog={{
+                  slug: `/blog/${blog._id}`,
+                  title: blog.title,
+                  description: blog.description,
+                  date: new Date().toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  }),
+                  image: blog.image_url,
+                  link: blog.link,
+                }}
+              />
             ))}
-        </div> */}
-        <div className="mt-10 ">
-          <BlogCard blog={myBlogPost} />
-          <BlogCard blog={myBlogPost} />
-           <BlogCard blog={myBlogPost} />
         </div>
 
         {home && (

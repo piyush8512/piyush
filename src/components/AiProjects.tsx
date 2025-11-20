@@ -1,10 +1,9 @@
 import { AI_PROJECTS } from "@/utils/data";
 import { ProjectCard } from "@/components/ProjectCard";
-import { MainTitle, SubTitle } from "@/components/Titile";
+import {  SubTitle } from "@/components/Titile";
 import { Section, WrapSection } from "@/components/Section";
 
-import Link from "next/link";
-import DotsSVG from "@/components/assets/DotsSVG";
+
 import RectangleSVG from "@/components/assets/RectangleSVG";
 
 const AIProjects = () => {

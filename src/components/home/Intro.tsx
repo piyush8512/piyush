@@ -8,8 +8,10 @@ import Carousel from "@/components/home/carousel";
 import RectangleSVG from "@/components/assets/RectangleSVG";
 import { getTestimonials, getSummary } from "@/sanity/lib/sanityApi";
 import { getResume } from "@/sanity/lib/sanityApi";
-import { useEffect, useState } from "react";
-import { Eye, X, Download } from "lucide-react";
+// import { useEffect, useState } from "react";
+import {  useState } from "react";
+// import { Eye, X, Download } from "lucide-react";
+import { Eye, X } from "lucide-react";
 
 const testimonialsData = await getTestimonials();
 const summaryData = await getSummary();
