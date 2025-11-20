@@ -135,4 +135,4 @@ export default function Intro() {
   );
 }
 
-export const Intro = Intro;
+export const Intro ;
