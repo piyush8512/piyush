@@ -53,7 +53,7 @@ export default function RootLayout({
     <html lang="en" className={firaCode.className}>
       <body
         className={`w-full md:px-40 min-h-screen bg-secondary flex flex-col antialiased`}
-      suppressHydrationWarning={true} ><ThemeProvider>
+      ><ThemeProvider>
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
