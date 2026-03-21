@@ -1,6 +1,13 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient(): Resend {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error("RESEND_API_KEY is not configured");
+  }
+
+  return new Resend(apiKey);
+}
 
 export interface BookingConfirmationData {
   visitorName: string;
@@ -17,6 +24,7 @@ export interface BookingConfirmationData {
  */
 export async function sendBookingConfirmation(data: BookingConfirmationData): Promise<void> {
   try {
+    const resend = getResendClient();
     const { visitorName, visitorEmail, slotStart, slotEnd, purpose, bookingId, timezone } = data;
 
     // Format dates for email
@@ -118,6 +126,7 @@ export async function sendBookingConfirmation(data: BookingConfirmationData): Pr
  */
 export async function sendBookingReminder(data: BookingConfirmationData): Promise<void> {
   try {
+    const resend = getResendClient();
     const { visitorName, visitorEmail, slotStart, purpose, bookingId, timezone } = data;
 
     const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -197,6 +206,7 @@ export async function sendBookingCancellation(
   reason?: string
 ): Promise<void> {
   try {
+    const resend = getResendClient();
     const fromEmail = process.env.BOOKING_FROM_EMAIL || "noreply@example.com";
 
     const htmlContent = `
