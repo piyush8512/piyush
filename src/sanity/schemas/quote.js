@@ -1,5 +1,5 @@
 // schemas/quote.js
-export default {
+const quote = {
   name: 'quote',
   title: 'Quote',
   type: 'document',
@@ -18,3 +18,5 @@ export default {
     }
   ]
 }
+
+export default quote

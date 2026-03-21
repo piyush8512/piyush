@@ -1,6 +1,6 @@
 // schemas/testimonial.js (or .ts)
 
-export default {
+const testimonial = {
   // Unique name for this schema type (used internally by Sanity)
   name: 'testimonial',
   // Display name in the Sanity Studio UI
@@ -53,3 +53,5 @@ export default {
     },
   ],
 };
+
+export default testimonial;

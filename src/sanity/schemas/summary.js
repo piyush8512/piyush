@@ -1,5 +1,5 @@
 // schemas/summary.js
-export default {
+const summary = {
   name: 'summary',
   title: 'Summary',
   type: 'document',
@@ -12,3 +12,5 @@ export default {
     }
   ]
 }
+
+export default summary

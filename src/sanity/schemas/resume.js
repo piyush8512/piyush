@@ -1,6 +1,6 @@
 
 //snaity reums eschema
-export default {
+const resume = {
   name: 'resume',
   title: 'Resume',
   type: 'document',
@@ -15,3 +15,5 @@ export default {
     },
   ]  
 };
+
+export default resume;

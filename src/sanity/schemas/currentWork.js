@@ -1,5 +1,5 @@
 // schemas/currentWork.js
-export default {
+const currentWork = {
   name: 'currentWork',
   title: 'Current Work',
   type: 'document',
@@ -17,3 +17,5 @@ export default {
     }
   ]
 }
+
+export default currentWork

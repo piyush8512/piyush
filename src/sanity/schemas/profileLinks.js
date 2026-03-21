@@ -1,5 +1,5 @@
 // schemas/profileLinks.js
-export default {
+const profileLinks = {
   name: 'profileLinks',
   title: 'Profile Links',
   type: 'document',
@@ -52,3 +52,5 @@ export default {
     },
   ]
 }
+
+export default profileLinks

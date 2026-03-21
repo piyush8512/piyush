@@ -1,5 +1,5 @@
 // schemas/skills.js
-export default {
+const skills = {
   name: 'skills',
   title: 'Skills',
   type: 'document',
@@ -42,3 +42,5 @@ export default {
     }
   ]
 }
+
+export default skills

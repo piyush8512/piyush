@@ -1,4 +1,4 @@
-export default {
+const aboutMe = {
   name: 'aboutMe',
   title: 'About Me',
   type: 'document',
@@ -12,3 +12,5 @@ export default {
     }
   ]
 }
+
+export default aboutMe

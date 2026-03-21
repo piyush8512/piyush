@@ -1,5 +1,5 @@
 // schemas/funFacts.js
-export default {
+const funFacts = {
   name: 'funFacts',
   title: 'Fun Facts',
   type: 'document',
@@ -13,3 +13,5 @@ export default {
     }
   ]
 }
+
+export default funFacts

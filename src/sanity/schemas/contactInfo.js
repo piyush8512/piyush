@@ -1,5 +1,5 @@
 // schemas/contactInfo.js
-export default {
+const contactInfo = {
   name: 'contactInfo',
   title: 'Contact Information',
   type: 'document',
@@ -24,3 +24,5 @@ export default {
     }
   ]
 }
+
+export default contactInfo

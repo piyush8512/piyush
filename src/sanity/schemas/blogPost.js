@@ -1,5 +1,4 @@
-
-export default {
+const blogPost = {
   name: 'blogPost',
   title: 'Blog Post',
   type: 'document',
@@ -40,3 +39,5 @@ export default {
     },
   },
 }
+
+export default blogPost
