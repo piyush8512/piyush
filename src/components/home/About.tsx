@@ -4,7 +4,6 @@ import { Section, WrapSection } from "@/components/Section";
 import { PrimaryText, TertiaryText } from "@/components/text";
 import { getAbout, getCurrentWork } from "@/sanity/lib/sanityApi";
 
-
 import Link from "next/link";
 import Image from "next/image";
 import AppLink from "@/components/app-link";
@@ -18,10 +17,7 @@ const about =
     ? aboutData[0].paragraphs
     : [];
 
-const CURRENT_WORK = currentWorkData
-  ? currentWorkData[0]
-  : {};
-
+const CURRENT_WORK = currentWorkData ? currentWorkData[0] : {};
 
 export default function About({ home = false }) {
   return (
@@ -63,8 +59,8 @@ export default function About({ home = false }) {
             <Image
               src="/images/profile.svg"
               alt="About Me"
-              layout="fill"
-              objectFit="contain"
+              fill
+              style={{ objectFit: "contain" }}
               className="z-10 "
             />
 
