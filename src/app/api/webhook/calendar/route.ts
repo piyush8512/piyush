@@ -3,6 +3,19 @@ import { connectToDatabase } from "@/lib/db/mongoose";
 import Booking from "@/lib/db/models/Booking";
 import { sendBookingCancellation } from "@/lib/email/resend-client";
 
+interface CalendarWebhookPayload {
+  eventId?: string;
+  status?: string;
+  newStart?: string;
+  newEnd?: string;
+}
+
+interface BookingRecord {
+  _id: { toString(): string };
+  visitorName: string;
+  visitorEmail: string;
+}
+
 /**
  * Webhook handler for calendar event updates
  * This can be called by Google Calendar to notify about event changes
@@ -11,10 +24,10 @@ import { sendBookingCancellation } from "@/lib/email/resend-client";
 export async function POST(request: NextRequest) {
   try {
     // Verify webhook signature (optional but recommended)
-    const body = await request.json();
+    const body = (await request.json()) as CalendarWebhookPayload;
 
     // Parse webhook data
-    const { eventId, status, reason } = body;
+    const { eventId, status } = body;
 
     if (!eventId) {
       return NextResponse.json(
@@ -74,7 +87,7 @@ export async function POST(request: NextRequest) {
 /**
  * Handle calendar event cancellation
  */
-async function handleEventCancellation(booking: any): Promise<void> {
+async function handleEventCancellation(booking: BookingRecord): Promise<void> {
   try {
     // Update booking status
     await Booking.updateOne(
@@ -100,12 +113,19 @@ async function handleEventCancellation(booking: any): Promise<void> {
 /**
  * Handle calendar event updates (time change, details change, etc.)
  */
-async function handleEventUpdate(booking: any, webhookData: any): Promise<void> {
+async function handleEventUpdate(
+  booking: BookingRecord,
+  webhookData: CalendarWebhookPayload
+): Promise<void> {
   try {
-    const { newStart, newEnd, reason } = webhookData;
+    const { newStart, newEnd } = webhookData;
 
     // Update booking if times changed
-    const updateData: any = { status: "CONFIRMED" };
+    const updateData: {
+      status: "CONFIRMED";
+      slotStart?: Date;
+      slotEnd?: Date;
+    } = { status: "CONFIRMED" };
 
     if (newStart) {
       updateData.slotStart = new Date(newStart);
@@ -133,7 +153,7 @@ async function handleEventUpdate(booking: any, webhookData: any): Promise<void> 
 /**
  * Handle calendar event confirmation (when attendee confirms)
  */
-async function handleEventConfirmation(booking: any): Promise<void> {
+async function handleEventConfirmation(booking: BookingRecord): Promise<void> {
   try {
     // Update booking status
     await Booking.updateOne(

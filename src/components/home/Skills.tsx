@@ -4,16 +4,14 @@ import { Section, WrapSection } from "@/components/Section";
 import SkillCard from "@/components/SkillCard";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { getSkills } from "@/sanity/lib/sanityApi";
-const skillsData = await getSkills();
-const rawSkills = Array.isArray(skillsData) ? skillsData[0] : {};
 
-const SKILLS = {
-  LANGUAGES: rawSkills.languages || [],
-  FRAMEWORKS: rawSkills.frameworks || [],
-  TOOLS: rawSkills.tools || [],
-  Mobile: rawSkills.mobile || [],
-  DATABASE: rawSkills.database || [],
-  OTHERS: rawSkills.others || [],
+const EMPTY_SKILLS = {
+  LANGUAGES: [] as string[],
+  FRAMEWORKS: [] as string[],
+  TOOLS: [] as string[],
+  Mobile: [] as string[],
+  DATABASE: [] as string[],
+  OTHERS: [] as string[],
 };
 
 interface SkillsData {
@@ -28,7 +26,7 @@ interface TerminalHistoryItem {
 const typeText = (
   text: string,
   setDisplay: React.Dispatch<React.SetStateAction<string>>,
-  delay = 30
+  delay = 30,
 ): Promise<void> => {
   return new Promise((resolve) => {
     let i = 0;
@@ -46,10 +44,11 @@ const typeText = (
 };
 
 export default function Skills({ home = false }) {
+  const [skills, setSkills] = useState(EMPTY_SKILLS);
   const [showTerminal, setShowTerminal] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
   const [terminalHistory, setTerminalHistory] = useState<TerminalHistoryItem[]>(
-    []
+    [],
   );
   const [currentInput, setCurrentInput] = useState<string>("");
   const [isTyping, setIsTyping] = useState<boolean>(false);
@@ -57,7 +56,41 @@ export default function Skills({ home = false }) {
   const terminalOutputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const typedSkills: SkillsData = SKILLS as SkillsData;
+  useEffect(() => {
+    let mounted = true;
+
+    const loadSkills = async () => {
+      try {
+        const skillsData = await getSkills();
+        const rawSkills = Array.isArray(skillsData) ? skillsData[0] || {} : {};
+
+        if (!mounted) return;
+
+        setSkills({
+          LANGUAGES: Array.isArray(rawSkills.languages)
+            ? rawSkills.languages
+            : [],
+          FRAMEWORKS: Array.isArray(rawSkills.frameworks)
+            ? rawSkills.frameworks
+            : [],
+          TOOLS: Array.isArray(rawSkills.tools) ? rawSkills.tools : [],
+          Mobile: Array.isArray(rawSkills.mobile) ? rawSkills.mobile : [],
+          DATABASE: Array.isArray(rawSkills.database) ? rawSkills.database : [],
+          OTHERS: Array.isArray(rawSkills.others) ? rawSkills.others : [],
+        });
+      } catch (error) {
+        console.error("Failed to load skills:", error);
+      }
+    };
+
+    void loadSkills();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const typedSkills: SkillsData = skills as SkillsData;
   const skillCategories = Object.keys(typedSkills);
   const allCategories = ["ALL", ...skillCategories];
 
@@ -149,7 +182,7 @@ Usage: Type a command like '/languages' or '/frameworks' to see skills.
       }
       setTimeout(scrollToBottom, 50);
     },
-    [typedSkills, allCategories, activeCategory, isTyping]
+    [typedSkills, allCategories, activeCategory, isTyping],
   );
 
   // Initialize terminal when it's opened
@@ -158,7 +191,7 @@ Usage: Type a command like '/languages' or '/frameworks' to see skills.
       const initTerminal = async () => {
         addToHistory(
           "output",
-          "Welcome to Skills Terminal! Type 'help' for available commands."
+          "Welcome to Skills Terminal! Type 'help' for available commands.",
         );
         // await new Promise((resolve) => setTimeout(resolve, 500));
         // processCommand("/all");
@@ -326,14 +359,14 @@ Usage: Type a command like '/languages' or '/frameworks' to see skills.
             <div
               className={`mt-0 grid grid-cols-2 gap-3 sm:grid-cols-3 ${home ? "" : "md:grid-cols-4 lg:grid-cols-5"} col-span-full`}
             >
-              <SkillCard title="Languages" skills={SKILLS.LANGUAGES} />
-              <SkillCard title="Frameworks" skills={SKILLS.FRAMEWORKS} />
-              <SkillCard title="Database" skills={SKILLS.DATABASE} />
-              <SkillCard title="Mobile Development" skills={SKILLS.Mobile} />
+              <SkillCard title="Languages" skills={skills.LANGUAGES} />
+              <SkillCard title="Frameworks" skills={skills.FRAMEWORKS} />
+              <SkillCard title="Database" skills={skills.DATABASE} />
+              <SkillCard title="Mobile Development" skills={skills.Mobile} />
 
-              <SkillCard title="Tools" skills={SKILLS.TOOLS} />
+              <SkillCard title="Tools" skills={skills.TOOLS} />
 
-              <SkillCard title="Others" skills={SKILLS.OTHERS} />
+              <SkillCard title="Others" skills={skills.OTHERS} />
             </div>
           </div>
         </div>

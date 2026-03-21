@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import { getAvailableSlots } from "@/lib/calendar/google-calendar";
 import { AvailabilityQuerySchema, formatValidationError } from "@/lib/validation/schemas";
 

@@ -312,7 +312,8 @@ export default function ChatWidget() {
                   }`}
                 >
                   <p className="whitespace-pre-wrap break-words leading-relaxed">
-                    {message.content || (message.role === "assistant" ? "..." : "")}
+                    {message.content ||
+                      (message.role === "assistant" ? "..." : "")}
                   </p>
                 </div>
               ))}
